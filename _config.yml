@@ -1,4 +1,2 @@
 timezone: Etc/GMT
 
-plugins:
-  - jekyll-feed
