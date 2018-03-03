@@ -3,6 +3,9 @@
 layout: null
 ---
 {
+    {% comment %} 
+        s/author/domain, s/tag/language
+    {% endcomment %}
     "articles": [
     {% for post in site.posts limit:100 %}
         {
@@ -15,11 +18,11 @@ layout: null
             {% if post.tags.size > 1 %}"tags": {{ post.tags | jsonify }},{% endif %}
             "date": "{{ post.date }}",
             "domain": "{{ site.author }}",
-            "urls": {
+            "translations": {
             {% for tag in post.tags %}
                 "{{ tag }}": "{{ tag | append: '/' | append: post.url | absolute_url }}",
+            {% endfor %}
             }
-            {% endif %}
         }{% if forloop.last == false %},{% endif %}
     {% endfor %}
     ]
