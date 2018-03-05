@@ -1,7 +1,6 @@
 {
     "articles": [
-    {% for post in site.posts limit:100 %}
-        {% if post.permalink and post.translations %}
+    {% for post in site.posts limit:100 %}{% if post.permalink and post.translations %}
         {
             "permalink": "{{ post.permalink }}",
             "original": "{{ post.original }}"
@@ -10,11 +9,8 @@
             "date": "{{ post.date }}",
             "domain": "{{ post.domain }}",
             "translations": {
-                {% for translation in post.translations %}
-                    "{{ translation }}": "{{ translation | append: post.url | absolute_url }}"{% if forloop.last == false %},{% endif %} {% endfor %}
+                {% for translation in post.translations %}"{{ translation }}": "{{ translation | append: post.url | absolute_url }}"{% if forloop.last == false %},{% endif %} {% endfor %}
             }
-        }{% if forloop.last == false %},{% endif %}
-        {% endif %}
-    {% endfor %}
+        }{% if forloop.last == false %},{% endif %}{% endif %}{% endfor %}
     ]
 }
