@@ -3,6 +3,7 @@
     {% for post in site.posts limit:100 %}
         {
             "permalink": "{{ post.permalink }}",
+            "original": "{{ post.original }}"
             "title": {{ post.title | jsonify }},
             "image": "{{ post.image}}",
             "date": "{{ post.date }}",
