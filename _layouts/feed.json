@@ -9,8 +9,8 @@
             "date": "{{ post.date }}",
             "domain": "{{ post.domain }}",
             "translations": {
-                {% for language in post.languages %}
-                    "{{ language }}": "{{ language | append: post.url | absolute_url }}"{% if forloop.last == false %},{% endif %} {% endfor %}
+                {% for translation in post.translations %}
+                    "{{ translation }}": "{{ translation | append: post.url | absolute_url }}"{% if forloop.last == false %},{% endif %} {% endfor %}
             }
         }{% if forloop.last == false %},{% endif %}
     {% endfor %}
