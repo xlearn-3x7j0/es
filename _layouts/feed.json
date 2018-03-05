@@ -2,6 +2,7 @@
     "articles": [
     {% for post in site.posts limit:100 %}
         {
+            {% if post.permalink and post.translations %}
             "permalink": "{{ post.permalink }}",
             "original": "{{ post.original }}"
             "title": {{ post.title | jsonify }},
@@ -11,8 +12,8 @@
             "translations": {
                 {% for translation in post.translations %}
                     "{{ translation }}": "{{ translation | append: post.url | absolute_url }}"{% if forloop.last == false %},{% endif %} {% endfor %}
-            },
-            "post": post
+            }
+           {% endif %}
         }{% if forloop.last == false %},{% endif %}
     {% endfor %}
     ]
