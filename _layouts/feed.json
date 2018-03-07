@@ -3,7 +3,7 @@
     {% for post in site.posts limit:100 %}{% if post.permalink and post.translations %}
         {
             "permalink": "{{ post.permalink }}",
-            "original": "{{ post.original }}"
+            "original": "{{ post.original }}",
             "title": {{ post.title | jsonify }},
             "image": "{{ post.image}}",
             "date": "{{ post.date }}",
