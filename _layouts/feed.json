@@ -1,6 +1,6 @@
 {
     "articles": [
-    {% for post in site.posts limit:100 %}
+    {% for post in site.posts limit:1000 %}
         {{ post.permalink }}: {{ post.translations | jsonify}}:
         {% if post.permalink and post.translations %}
         {
