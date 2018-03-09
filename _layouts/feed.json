@@ -1,7 +1,6 @@
 {
     "articles": [{% assign count = 1 %}
-    {% for post in site.posts %}
-        {% if post.permalink and post.translations %}{% assign count = count | plus:1 %}
+    {% for post in site.posts %}{% if post.permalink and post.translations %}{% assign count = count | plus:1 %}
         {
             "permalink": "{{ post.permalink }}",
             "original": "{{ post.original }}",
