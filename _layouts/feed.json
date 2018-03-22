@@ -4,10 +4,11 @@
         {
             "permalink": "{{ post.permalink }}",
             "original": "{{ post.original }}",
+            "domain": "{{ post.domain }}",
             "title": {{ post.title | jsonify }},
             "image": "{{ post.image}}",
             "date": "{{ post.date }}",
-            "domain": "{{ post.domain }}",
+            "category": "{{ post.category }}",
             "translations": {
                  {% for translation in post.translations %}
                      "{{ translation }}": "{{ translation | append: post.url | absolute_url }}"{% if forloop.last == false %},{% endif %} {% endfor %}
