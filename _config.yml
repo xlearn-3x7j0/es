@@ -2,3 +2,6 @@ timezone: Etc/GMT
 
 plugins:
   - jekyll-feed
+  
+keep_files:
+  - *.html
