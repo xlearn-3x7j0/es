@@ -4,3 +4,5 @@ plugins:
   - jekyll-feed
   
 keep_files: ['.html']
+
+limit_posts: 100
