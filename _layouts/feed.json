@@ -2,7 +2,7 @@
 {% for post in site.posts %}{% if post.permalink and post.translations %}{% assign count = count | plus:1 %}
     {
         "permalink": "{{ post.permalink }}",
-        "url": "{{ post.url or post.original }}",
+        "url": "{{ post.original }}",
         "domain": "{{ post.domain }}",
         "title": {{ post.title | jsonify }},
         "image": "{{ post.image}}",
