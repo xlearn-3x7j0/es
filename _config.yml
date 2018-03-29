@@ -5,4 +5,4 @@ plugins:
   
 keep_files: ['.html']
 
-limit_posts: 100
+limit_posts: 1000
