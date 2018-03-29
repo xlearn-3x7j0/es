@@ -1,5 +1,5 @@
 [{% assign count = 1 %}
-{% for post in site.posts limit: 200 %}{% if post.permalink and post.translations %}{% assign count = count | plus:1 %}
+{% for post in site.posts %}{% if post.permalink and post.translations %}{% assign count = count | plus:1 %}
     {
         "permalink": "{{ post.permalink }}",
         "url": "{{ post.original }}",
@@ -11,6 +11,5 @@
         "languages": [
              {% for translation in post.translations %}"{{ translation }}"{% unless forloop.last %},{% endunless %}{% endfor %}
         ]
-    },
-{% endfor %}
+    }{% if count > 200 %}{% break %}{% else %},{% endif %}{% endif %}{% endfor %}
 ]
