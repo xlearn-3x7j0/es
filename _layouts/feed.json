@@ -11,5 +11,5 @@
         "languages": [
              {% for translation in post.translations %}"{{ translation }}"{% unless forloop.last %},{% endunless %}{% endfor %}
         ]
-    }{% unless count > 200 %},{% else %}{% break %}{% endunless %}{% endfor %}
+    }{% if count > 200 %}{% break %}{% else %},{% endif %}{% endfor %}
 ]
