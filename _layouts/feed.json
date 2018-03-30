@@ -1,7 +1,7 @@
 {
     {% assign categories = '' %}
     articles: [{% assign count = 1 %}
-    {% for post in site.posts %}{% if post.permalink and post.translations %}{% assign count = count | plus:1 %}
+    {% for post in site.posts limit 200 %}{% if post.permalink and post.translations %}{% assign count = count | plus:1 %}
         {
             "permalink": "{{ post.permalink }}",
             "url": "{{ post.original }}",
@@ -19,7 +19,8 @@
                 {% endif %}
                 {% assign categories = categories | append: post.category %}
             {% endunless %}
-        }{% if count > 200 %}{% break %}{% else %},{% endif %}{% endif %}{% endfor %}
+        }{% unless for.last %},{% endunless %}{% endif %}
+    {% endfor %}
     ],
     categories: {{ categories | split: ', ' | jsonify }}
 }
