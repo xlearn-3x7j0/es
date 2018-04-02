@@ -1,5 +1,5 @@
 {
-    {% assign categories = '' %}
+    {% assign categories = '' | split: '' %}
     articles: [{% assign count = 1 %}
     {% for post in site.posts limit 200 %}{% if post.permalink and post.translations %}{% assign count = count | plus:1 %}
         {
@@ -10,10 +10,14 @@
             "image": "{{ post.image}}",
             "date": "{{ post.date }}",
             "category": "{{ post.category }}",
-            "languages": [
-                 {{ post.translations | jsonify }}{% endfor %}
-            ]
-        }{% unless for.last %},{% endunless %}{% endif %}
+            "languages": {{ post.translations | jsonify }}
+            {% unless categories contains post.category %}
+              {% assign categories = post.category | split: '   ' | concat: categories %}
+            {% endunless %}
+        }{% if forloop.last == false %},{% endif %}{% endif %}
     {% endfor %}
-    ]
+    ],
+  
+    categories: {{ categories | jsonify }}
+
 }
